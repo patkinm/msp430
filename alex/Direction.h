@@ -1,0 +1,7 @@
+
+
+
+enum Direction
+{
+	In, Out
+};
