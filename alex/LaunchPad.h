@@ -64,12 +64,16 @@ public:
 			return true;
 		}
 	}
+        
+        void InitADC(char serialNumber)
+        {
+            ADC10CTL0 = ADC10ON | SREF_0 | ADC10SHT_3;// | REF2_5V | REFOUT;
+            ADC10CTL1 = serialNumber * 0x1000u | ADC10DIV_7 | ADC10SSEL_2;
+            ADC10AE0 = 1 << serialNumber;
+        }
 
 	int GetADCData(char serialNumber)
 	{
-		ADC10CTL0 = ADC10ON | SREF_0 | ADC10SHT_3;// | REF2_5V | REFOUT;
-		ADC10CTL1 = serialNumber * 0x1000u | ADC10DIV_7 | ADC10SSEL_2;
-		ADC10AE0 = 1 << serialNumber;
 		int avg = 0;
 		for (uchar i = 0; i < 16; i++)
 		{
