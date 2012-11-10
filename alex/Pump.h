@@ -39,9 +39,9 @@ public:
 	
 	void UpdateTemps()
 	{
-		mTempLow = LaunchPad::GetInstance().GetADCData(5);      //Pin 1.5
-		mTempHigh = LaunchPad::GetInstance().GetADCData(6);     //Pin 1.6
-		mTempControl = LaunchPad::GetInstance().GetADCData(7);  //Pin 1.7
+	    mTempLow = LaunchPad::GetInstance().GetADCData(5) * 0.404f - 273;      //Pin 1.5
+		mTempHigh = LaunchPad::GetInstance().GetADCData(6) * 0.404f - 273;     //Pin 1.6
+		mTempControl = LaunchPad::GetInstance().GetADCData(7) * 0.404f - 273;  //Pin 1.7
 	}
 	
 	void ShowTemps(int row);
@@ -81,10 +81,10 @@ private:
   	static int ADC2;
 	static int ADC3;
 	
-  	uint mTempLow;
+  	int mTempLow;
 	
-	uint mTempHigh;
+	int mTempHigh;
 	
-	uint mTempControl;
+	int mTempControl;
 
 };
